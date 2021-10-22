@@ -5,7 +5,9 @@
 }
 
 .imageName img{
-    margin-right: 1rem;    
+    margin-right: 1rem;
+    width: 121px;
+    height: 131px;    
 }
 
 .table{

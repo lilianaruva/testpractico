@@ -5,12 +5,7 @@ import Chart from "react-apexcharts";
 const PresenceShare = () => {
   const [labels,setLabels] = useState([]);
   const [cate, setCategories] = useState({
-    fill: {
-        colors: ["#D6215B", "#FF7A00" ,"#7530B2","#23B794", "#006FFF"]
-    },
-    methods:{
-        colors: ["#D6215B", "#FF7A00" ,"#7530B2","#23B794", "#006FFF"]
-    },
+    
   });
 
   const buildChart = (data) =>{
@@ -38,7 +33,7 @@ const PresenceShare = () => {
     <>
       <h3>Presence Share by Product</h3>
       <div style={{height: 407, backgroundColor: "#fff", display: "flex", flexWrap: "nowrap", alignItems: "center"}}>
-      {labels.length > 0 &&  cate.length > 0 ? <Chart options={{labels: labels}} series={cate} type="pie" width="500"/> : ""}
+      {labels.length > 0 &&  cate.length > 0 ? <Chart options={{ dataLabels: {enabled: false} , colors:["#D6215B", "#FF7A00" ,"#7530B2","#23B794", "#006FFF"],    labels: labels}} series={cate} type="pie" width="500"/> : ""}
       </div>
     </>
   );
