@@ -12,11 +12,15 @@ import '../../styles/table.css';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: `#`,
-    color: theme.palette.common.white,
+    backgroundColor: `#A6A6A7`,
+    color: '#01172C',
+    fontFamily: 'Montserrat',
+    fontSize: 20,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 20,
+    color: '#565657',
+    fontFamily: 'Montserrat',
   },
 }));
 
