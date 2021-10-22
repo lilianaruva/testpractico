@@ -1,5 +1,5 @@
 import React from 'react';
-import TableAnalysis from './Table'
+import TableAnalysis from './Table';
 
 const ComparativeAnalysis = () =>{
     return(

@@ -3,8 +3,6 @@ import { getPresenceChartData } from "../../api/PresenceChartModels/PresenceChar
 import Chart from "react-apexcharts";
 
 const PresenceShare = () => {
-  const [chartData, setChartData] = useState();
-  const [series, setSeriesOptions] = useState([]);
   const [labels,setLabels] = useState([]);
   const [cate, setCategories] = useState({
     fill: {
@@ -39,8 +37,8 @@ const PresenceShare = () => {
   return (
     <>
       <h3>Presence Share by Product</h3>
-      <div style={{height: 407, backgroundColor: "#fff"}}>
-      {labels.length > 0 &&  cate.length > 0 ? <Chart options={{labels: labels}} series={cate} type="pie" width="500"/>  : ""}
+      <div style={{height: 407, backgroundColor: "#fff", display: "flex", flexWrap: "nowrap", alignItems: "center"}}>
+      {labels.length > 0 &&  cate.length > 0 ? <Chart options={{labels: labels}} series={cate} type="pie" width="500"/> : ""}
       </div>
     </>
   );

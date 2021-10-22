@@ -12,7 +12,7 @@
     margin: 1rem 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
     .container {
         display: block;
         padding: 1rem 0;

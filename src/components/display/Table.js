@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,20 +7,22 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import imagePrueba from "../../imgs/Img.png";
+import { getProductTable } from "../../api/ProducTable/ProducTableModels";
 //css
-import '../../styles/table.css';
+import "../../styles/table.css";
 
+//style by materialUi
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: `#A6A6A7`,
-    color: '#01172C',
-    fontFamily: 'Montserrat',
+    color: "#01172C",
+    fontFamily: "Montserrat",
     fontSize: 20,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 20,
-    color: '#565657',
-    fontFamily: 'Montserrat',
+    color: "#565657",
+    fontFamily: "Montserrat",
   },
 }));
 
@@ -35,6 +37,40 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 const TableAnalysis = () => {
+  const [dataTable, setDataTable] = useState([]);
+
+  const buildCells = (data) => {
+    console.log(data);
+    if (data !== undefined) {
+      data.map((d) => {
+        return (
+          <>
+            <StyledTableRow key={d.id}>
+              <StyledTableCell component="th" scope="row">
+                <div className="imageName">
+                  <img src={imagePrueba} />
+                  "name"
+                </div>
+              </StyledTableCell>
+              <StyledTableCell align="center">d.sku</StyledTableCell>
+              <StyledTableCell align="center">d.persistence</StyledTableCell>
+              <StyledTableCell align="center">d.averagePrice</StyledTableCell>
+              <StyledTableCell align="center"></StyledTableCell>
+            </StyledTableRow>
+          </>
+        );
+      });
+    }
+  };
+
+  useEffect(() => {
+    buildCells(dataTable);
+  }, [dataTable]);
+
+  useEffect(() => {
+    getProductTable().then((data) => setDataTable(data));
+  }, []);
+
   return (
     <>
       <TableContainer className="table">
@@ -49,18 +85,41 @@ const TableAnalysis = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <StyledTableRow key="01">
-              <StyledTableCell component="th" scope="row">
-                <div className="imageName">
-                  <img src={imagePrueba} />
-                  name
-                </div>
-              </StyledTableCell>
-              <StyledTableCell align="center">calories</StyledTableCell>
-              <StyledTableCell align="center">fat</StyledTableCell>
-              <StyledTableCell align="center">carbs</StyledTableCell>
-              <StyledTableCell align="center">protein</StyledTableCell>
-            </StyledTableRow>
+            {dataTable.length > 0
+              ? dataTable.map((data) => {
+                  return (
+                    <>
+                      <StyledTableRow key="1">
+                        <StyledTableCell component="th" scope="row">
+                          <div className="imageName">
+                            <img src={data.productImage} />
+                            {data.name}
+                          </div>
+                        </StyledTableCell>
+                        <StyledTableCell align="center">
+                          {data.sku}
+                        </StyledTableCell>
+                        <StyledTableCell
+                          style={
+                            data.persistence > 0
+                              ? { color: "#23B794" }
+                              : { color: "#D6215B" }
+                          }
+                          align="center"
+                        >
+                          {data.persistence * 100} %
+                        </StyledTableCell>
+                        <StyledTableCell align="center">
+                          {data.averagePrice}
+                        </StyledTableCell>
+                        <StyledTableCell align="center">
+                          {data.averagePosition}
+                        </StyledTableCell>
+                      </StyledTableRow>
+                    </>
+                  );
+                })
+              : ""}
           </TableBody>
         </Table>
       </TableContainer>
@@ -69,20 +128,3 @@ const TableAnalysis = () => {
 };
 
 export default TableAnalysis;
-
-/*
-<TableBody>
-            {rows.map((row) => (
-              <StyledTableRow key={row.name}>
-                <StyledTableCell component="th" scope="row">
-                  {row.name}
-                </StyledTableCell>
-                <StyledTableCell align="center">{row.calories}</StyledTableCell>
-                <StyledTableCell align="center">{row.fat}</StyledTableCell>
-                <StyledTableCell align="center">{row.carbs}</StyledTableCell>
-                <StyledTableCell align="center">{row.protein}</StyledTableCell>
-              </StyledTableRow>
-            ))}
-          </TableBody>
-
-*/

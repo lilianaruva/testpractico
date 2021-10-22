@@ -114,7 +114,7 @@ const PriceEvolution = () => {
     <>
       <h3>Price Evolution</h3>
       <div style={{height: 407, backgroundColor: "#fff"}}>
-      <Chart options={cate} series={series} type="line" width="868" height="390" />
+      <Chart style={{maxWidth:"868px"}} options={cate} series={series} type="line" width="100%" height="390" />
       </div>
     </>
   );
