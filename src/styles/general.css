@@ -10,9 +10,6 @@
 .content {
     text-align: left;
     margin: 1rem 0;
-    /*
-    border: 1px solid #E9E9E9;
-    background-color:#FFFFFF;*/
 }
 
 @media (max-width: 600px) {

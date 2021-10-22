@@ -90,16 +90,13 @@ const PriceEvolution = () => {
         categoriesArray.push(parsed.format("MMM D"));
       });
 
-      console.log(cate);
       let sortedArray = [...new Set(categoriesArray)].sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
       });
-      console.log(sortedArray);
       setCategories((prevCat) => ({
         ...prevCat,
         xaxis: { categories: [...new Set(categoriesArray)] },
       }));
-      console.log(cate);
     }
   };
 
