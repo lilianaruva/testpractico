@@ -6,7 +6,6 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import imagePrueba from "../../imgs/Img.png";
 import { getProductTable } from "../../api/ProducTable/ProducTableModels";
 //css
 import "../../styles/table.css";
@@ -39,32 +38,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 const TableAnalysis = () => {
   const [dataTable, setDataTable] = useState([]);
 
-  const buildCells = (data) => {
-    console.log(data);
-    if (data !== undefined) {
-      data.map((d) => {
-        return (
-          <>
-            <StyledTableRow key={d.id}>
-              <StyledTableCell component="th" scope="row">
-                <div className="imageName">
-                  <img src={imagePrueba} />
-                  "name"
-                </div>
-              </StyledTableCell>
-              <StyledTableCell align="center">d.sku</StyledTableCell>
-              <StyledTableCell align="center">d.persistence</StyledTableCell>
-              <StyledTableCell align="center">d.averagePrice</StyledTableCell>
-              <StyledTableCell align="center"></StyledTableCell>
-            </StyledTableRow>
-          </>
-        );
-      });
-    }
-  };
-
   useEffect(() => {
-    buildCells(dataTable);
+    //buildCells(dataTable);
   }, [dataTable]);
 
   useEffect(() => {
@@ -89,7 +64,7 @@ const TableAnalysis = () => {
               ? dataTable.map((data) => {
                   return (
                     <>
-                      <StyledTableRow key="1">
+                      <StyledTableRow >
                         <StyledTableCell component="th" scope="row">
                           <div className="imageName">
                             <img src={data.productImage} />
