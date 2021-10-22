@@ -115,7 +115,7 @@ const PriceEvolution = () => {
   }, []);
   return (
     <>
-      <h4>Price Evolution</h4>
+      <h3>Price Evolution</h3>
       <div style={{height: 407, backgroundColor: "#fff"}}>
       <Chart options={cate} series={series} type="line" width="868" height="390" />
       </div>
