@@ -1,0 +1,8 @@
+nav{
+    min-height: 10vh;
+    display: flex;
+    background-color: #006FFF;
+}
+img{
+    margin-left: 1rem;
+}
