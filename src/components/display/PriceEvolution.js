@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { getPriceEvolution } from "../../api/PriceEvolutionChart/PriceEvolutionModels";
 import moment from "moment";
+import '../../styles/general.css'
 
 const PriceEvolution = () => {
   const [chartData, setChartData] = useState();
@@ -9,15 +10,39 @@ const PriceEvolution = () => {
   const [cate, setCategories] = useState({
     chart: {
       id: "basic-bar",
+      background: '#fff',
+      fontFamily: 'Hind, sans-serif',
+      toolbar: {
+        show: false,
+      },
+    },
+    grid: {
+        borderColor: '#FFF',
+        row:{
+            opacity: 0.5,
+            colors:[ "#F8F8F8","transparent"]
+        }
     },
     stroke: {
       curve: "smooth",
     },
-    colors: ["#D6215B","#7530B2","#FFB448"
-    ],
+    colors: ["#D6215B", "#7530B2", "#FFB448"],
     xaxis: {
       categories: [],
     },
+    responsive: [{
+        breakpoint: 1000,
+        options: {
+            plotOptions: {
+              bar: {
+                horizontal: false
+              }
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+    }]
   });
 
   // Constructing according array for lineChart
@@ -91,7 +116,9 @@ const PriceEvolution = () => {
   return (
     <>
       <h4>Price Evolution</h4>
-      <Chart options={cate} series={series} type="line" width="500" />
+      <div style={{height: 407, backgroundColor: "#fff"}}>
+      <Chart options={cate} series={series} type="line" width="868" height="390" />
+      </div>
     </>
   );
 };

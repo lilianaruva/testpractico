@@ -1,0 +1,29 @@
+.container {
+    min-height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    color: white;
+}
+
+.content {
+    text-align: left;
+    margin: 1rem 0;
+    /*
+    border: 1px solid #E9E9E9;
+    background-color:#FFFFFF;*/
+}
+
+@media (max-width: 600px) {
+    .container {
+        display: block;
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+}
+
+#chart{
+    max-width: 760px;
+}

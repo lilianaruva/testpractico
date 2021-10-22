@@ -7,8 +7,8 @@ const PresenceShare = () => {
   const [series, setSeriesOptions] = useState([]);
   const [labels,setLabels] = useState([]);
   const [cate, setCategories] = useState({
-    plotOptions: {
-        
+    fill: {
+        colors: ["#D6215B", "#FF7A00" ,"#7530B2","#23B794", "#006FFF"]
     },
     methods:{
         colors: ["#D6215B", "#FF7A00" ,"#7530B2","#23B794", "#006FFF"]
@@ -38,9 +38,10 @@ const PresenceShare = () => {
 
   return (
     <>
-      <h3>Presence Share by Product</h3>
-      {labels.length > 0 &&  cate.length > 0 ? <Chart options={{labels: labels}} series={cate} type="pie" width="380" />  : ""}
-      
+      <h4>Presence Share by Product</h4>
+      <div style={{height: 407, backgroundColor: "#fff"}}>
+      {labels.length > 0 &&  cate.length > 0 ? <Chart options={{labels: labels}} series={cate} type="pie" width="500"/>  : ""}
+      </div>
     </>
   );
 };
