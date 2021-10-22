@@ -10,6 +10,11 @@ const PriceEvolution = () => {
     chart: {
       id: "basic-bar",
     },
+    stroke: {
+      curve: "smooth",
+    },
+    colors: ["#D6215B","#7530B2","#FFB448"
+    ],
     xaxis: {
       categories: [],
     },
@@ -47,7 +52,6 @@ const PriceEvolution = () => {
 
   //Constructing Object categories for line chart
   const buildCategories = (data) => {
-
     if (data !== undefined) {
       var daylist = getDaysArray(
         new Date(data[0].dateExtraction),
@@ -55,22 +59,22 @@ const PriceEvolution = () => {
       );
       daylist.map((v) => v.toISOString().slice(0, daylist.length)).join("");
 
-      let categoriesArray= [];
-      data.map(date => {
+      let categoriesArray = [];
+      data.map((date) => {
         let parsed = moment(date.dateExtraction);
-        categoriesArray.push(parsed.format("MMM D"))
-    })
+        categoriesArray.push(parsed.format("MMM D"));
+      });
 
-    console.log(cate);
-    let sortedArray = [...new Set (categoriesArray)].sort((a, b) => {
+      console.log(cate);
+      let sortedArray = [...new Set(categoriesArray)].sort((a, b) => {
         return new Date(b.date) - new Date(a.date);
-    })
-    console.log(sortedArray);
-    setCategories(prevCat => ({
+      });
+      console.log(sortedArray);
+      setCategories((prevCat) => ({
         ...prevCat,
-        xaxis: { categories: [...new Set (categoriesArray)] }
-    }));
-    console.log(cate);
+        xaxis: { categories: [...new Set(categoriesArray)] },
+      }));
+      console.log(cate);
     }
   };
 
@@ -86,7 +90,6 @@ const PriceEvolution = () => {
   }, []);
   return (
     <>
-     
       <h4>Price Evolution</h4>
       <Chart options={cate} series={series} type="line" width="500" />
     </>

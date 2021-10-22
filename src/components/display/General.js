@@ -7,10 +7,12 @@ import PresenceShare from './PresenceShare';
 const General = () =>{
     return(
         <>
+        <div style={{margin: "2rem"}}>
         <h1>General Performance Analysis</h1>
         <PriceEvolution/>
         <PresenceShare/>
         <ComparativeAnalysis/>
+        </div>
         </>
     )
 }
